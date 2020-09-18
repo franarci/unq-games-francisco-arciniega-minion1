@@ -1,0 +1,68 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://HUD.gd" type="Script" id=1]
+[ext_resource path="res://assets/diamond.png" type="Texture" id=2]
+[ext_resource path="res://assets/fonts/Xolonium-Regular.ttf" type="DynamicFontData" id=3]
+
+[sub_resource type="DynamicFont" id=3]
+size = 34
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFontData" id=1]
+font_path = "res://assets/fonts/Xolonium-Regular.ttf"
+
+[sub_resource type="DynamicFont" id=2]
+size = 64
+font_data = SubResource( 1 )
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource( 1 )
+
+[node name="ScoreLabel" type="Label" parent="."]
+margin_left = 964.716
+margin_top = 2.70711
+margin_right = 1009.72
+margin_bottom = 80.7071
+custom_fonts/font = SubResource( 3 )
+text = "0"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Message" type="Label" parent="."]
+margin_left = 314.622
+margin_top = 149.218
+margin_right = 696.622
+margin_bottom = 308.218
+custom_fonts/font = SubResource( 2 )
+text = "Esquiva los
+ triángulos"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="StartButton" type="Button" parent="."]
+margin_left = 394.245
+margin_top = 381.699
+margin_right = 630.245
+margin_bottom = 465.699
+custom_fonts/font = SubResource( 2 )
+text = "Start!"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MessageTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[node name="Sprite" type="Sprite" parent="."]
+light_mask = 0
+position = Vector2( 953.658, 24.2708 )
+scale = Vector2( 0.560071, 0.690641 )
+texture = ExtResource( 2 )
+__meta__ = {
+"_edit_group_": true
+}
+[connection signal="pressed" from="StartButton" to="." method="_on_StartButton_pressed"]
+[connection signal="timeout" from="MessageTimer" to="." method="_on_MessageTimer_timeout"]
